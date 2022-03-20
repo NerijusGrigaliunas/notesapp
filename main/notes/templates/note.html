@@ -3,7 +3,7 @@
 
 <h1>Name: {{note.title}}</h1>
 <p>Description: {{note.description}}</p>
-    {% for cat in category %}
+    {% for cat in note.category.all %}
     <span style="border:1px solid black">{{cat.name}}
     {% endfor %}
     </span>
