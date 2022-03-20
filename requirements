@@ -1,0 +1,28 @@
+Baigiamasis projektas
+
+Šios projekto metu reikės sukurti Užrašinės programą naudojant Django arba Flask ir MongoDB arba MySQL. Projekto tikslas - leisti registruotiems varotojamas kurti ir saugoti užrašus, priskirti juos į tam tikras kategorijas. Galite įsivaizduoti kažką panašaus į https://keep.google.com/, tik supaprastintą versiją.
+
+Funkcionalumas:
+Registruotis
+Prisijungti
+Sukurti naują kategoriją (tik prisijungus)
+Redaguoti kategoriją (tik prisijungus)
+Ištrinti kategoriją (tik prisijungus)
+Sukurti naują užrašą (tik prisijungus)
+Užrašas turėtų turėti pavadinimą ir užrašo tekstą
+Taip pat, turėtų būti galimybė prie užrašo pridėti nuotraukas
+Leistų priskirti užrašą tam tikrai kategorijai
+Redaguoti užrašą (tik prisijungus)
+Ištrinti užrašą (tik prisijungus)
+Leisti ieškoti užrašus pagal pavadinimą (tik prisijungus)
+Leisti filtruoti užrašus pagal užrašo kategoriją (tik prisijungus)
+
+### Backend'as
+
+#### Duomenų bazė
+
+Duomenų bazė saugoti visą informaciją - užrašus, kategorijas vartotojus, ir bet kokią kitą informaciją kurios prireiktų. Jeigu naudojate MySQL duomenų bazę būtina sukurti sąryšius tarp lentelių ir naudoti "Primary Key" bei "Foreign Key" apribojimus.
+
+### Frontend'as
+
+Frontend'as neturi nustatyto dizaino vaizdo (angl. wireframes), kurį reikia atkartoti. Tačiau jum tenka sunkesnė užduotis - patiems sugalvoti ir sukurti puslapio dizainą. Svarbiausia išpildyti visus funkcinius reikalavimus ir validuoti vartotojo įvestį.
