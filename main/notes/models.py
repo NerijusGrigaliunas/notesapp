@@ -2,8 +2,10 @@
 from email.policy import default
 from django.db import models
 from django.contrib.auth.models import User
+
 import uuid
-# Create your models here.
+
+
 class Note(models.Model):
     owner = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL)
     title = models.CharField(max_length=200)

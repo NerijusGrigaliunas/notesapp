@@ -2,10 +2,60 @@
 
 {% block content %}
 
-
-<ul>Notes</ul>
-{% for nt in notes %}
-<li>Title: <a href="{% url 'note' nt.id %}">{{nt.title}}</a></li>
-
-{% endfor %}
-{% endblock content %}
+<main class="skills">
+    <section class="hero-section text-center">
+      <div class="container container--narrow">
+        <div class="hero-section__box">
+          <h2>Search for <span>notes</span></h2>
+        </div>
+  
+        <div class="hero-section__search">
+          <form class="form" action="#" method="get">
+            <div class="form__field">
+              <label for="formInput#search">Search By skills </label>
+              <input class="input input--text" id="formInput#search" type="text" name="text"
+                placeholder="Search by Note Title" />
+            </div>
+  
+            <input class="btn btn--sub btn--lg" type="submit" value="Search" />
+          </form>
+        </div>
+      </div>
+    </section>
+    <!-- Search Result: DevList -->
+    <section class="skillsList">
+      <div class="container">
+        <div class="grid grid--three">
+            {% for nt in notes %}
+            <div class="column">
+              <div class="card skill" >
+                <a href="{% url 'note' nt.id %}" class="skill">
+            
+                  <div class="card__body">
+                    <h3 class="skill__title">{{nt.title}}</h3>
+                    <img style="max-width: 500px;" src="{{ nt.image.url}}">
+                    <p class="skill--rating">
+                      <span style="font-weight: bold;"></span> {{nt.description}}
+                    </p>
+                    
+                    <div class="skill__tags">
+                         {% for tag in nt.tags.all %}
+                         <span class="tag tag--pill tag--main">
+                         <small>{{tag}}</small>
+                         </span>
+                         {% endfor %}
+                       <p><a class="skill__author" href="{% url 'note' nt.id %}">{{nt.created}}</a></p>
+                       <p><a class="skill__author" href="{% url 'update-note' nt.id %}">Edit</a></p>
+                       <p><a class="skill__author" href="{% url 'delete-note' nt.id %}">Delete</a></p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+                        {% endfor %}
+  
+  
+        </div>
+      </div>
+    </section>
+    {% endblock content %}

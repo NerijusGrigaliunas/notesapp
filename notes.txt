@@ -1,0 +1,2 @@
+user = 
+filter_notes = note.owner_set.filter(owner = "user.name")
