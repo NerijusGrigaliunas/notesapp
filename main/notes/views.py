@@ -5,10 +5,10 @@ from unicodedata import category
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from .models import Note
-from. forms import NoteForm
+from. forms import NoteForm, CategoryForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
-
+from django.contrib.auth.decorators import login_required
 
 def notes(request):
     notes = Note.objects.all()
@@ -20,6 +20,7 @@ def note(request, pk):
     category = note.category.all()
     return render(request, 'note.html', {'note': note, 'category': category})
 
+@login_required(login_url="login")
 def createNote(request):
     form = NoteForm(request.POST, request.FILES)
     if form.is_valid():
@@ -28,8 +29,15 @@ def createNote(request):
     context = {'form': form}
     return render(request, 'note-form.html', context)
 
+def createCategory(request):
+    form = CategoryForm(request.POST)
+    if form.is_valid():
+        form.save()
+        return redirect('notes')
+    context = {'form': form}
+    return render(request, 'category-form.html', context)
 
-
+@login_required(login_url="login")
 def updateNote(request, pk):
     note = Note.objects.get(id=pk)
     form = NoteForm(instance = note)
@@ -42,7 +50,7 @@ def updateNote(request, pk):
     context = {'form': form}
     return render (request, 'note-form.html', context)
 
-
+@login_required(login_url="login")
 def deleteNote(request, pk):
     note = Note.objects.get(id=pk)
     if request.method == 'POST':

@@ -1,7 +1,8 @@
 from dataclasses import field
 from unicodedata import category
 from django.forms import ModelForm
-from .models import Note
+from .models import Note, Category
+
 from django import forms
 
 class NoteForm(ModelForm):
@@ -22,5 +23,12 @@ class NoteForm(ModelForm):
         
         # for name, field in self.fields.items():
         #     field.widget.attrs.update({'class':'input'})
-    
-    
+
+
+class CategoryForm(ModelForm):
+    class Meta:
+            model = Category
+            fields = ['name']
+    def __init__(self, *args, **kwargs):
+
+            super(CategoryForm, self).__init__(*args, **kwargs)
