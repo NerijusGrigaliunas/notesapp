@@ -3,7 +3,8 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.notes, name = "notes"),
+    path('', views.index, name = "index"),
+    path('notes', views.notes, name = "notes"),
     path('note/<str:pk>/', views.note, name= "note"),
     path('note-form', views.createNote, name= "note-form"),
     path('category-form', views.createCategory, name= "category-form"),

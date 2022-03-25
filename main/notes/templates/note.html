@@ -1,11 +1,39 @@
+
+
 {% extends 'main.html' %}
 {% block content %}
 
-<h1>Name: {{note.title}}</h1>
-<img style="max-width: 500px;" src="{{ note.image.url }}">
-<p>Description: {{note.description}}</p>
-    {% for cat in note.category.all %}
-    <span style="border:1px solid black">{{cat.name}}
-    {% endfor %}
-    </span>
-{% endblock %}
+  <!-- Main Section -->
+  <main class="singleskill my-md">
+    <div class="container">
+      <div class="layout">
+        <div class="column column--1of3">
+          <h3 class="singleskill__subtitle">Tags</h3>
+          <div class="singleskill__toolStack">
+            {% for cat in notes.category.all %}
+            <span class="tag tag--pill tag--sub tag--lg">
+              
+              <small>{{cat.name}}</small>
+              
+            </span>
+              {% endfor %}
+          </div>
+     
+        </div>
+        <div class="column column--2of3">
+        
+          <a href="profile.html" class="singleskill__developer">{{note.owner}}</a>
+          <h2 class="singleskill__title">{{note.title}}</h2>
+          <div class="singleskill__info">
+            {{note.description}}
+            <br />
+            <p>{{note.created}}</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    </div>
+  </main>
+{% endblock content %}
+
